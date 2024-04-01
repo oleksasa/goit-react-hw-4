@@ -8,7 +8,7 @@ export const Image = styled.img`
   transition: 0.3s ease-in-out;
 `;
 
-export const Button = styled.button`
+export const Div = styled.div`
   width: 100%;
   height: 100%;
   &:hover {
