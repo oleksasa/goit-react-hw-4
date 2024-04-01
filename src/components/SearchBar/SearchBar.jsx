@@ -1,19 +1,39 @@
-import React from "react";
+import React, { useRef } from "react";
+
+import * as S from './SearchBar.style'
+
+
 
 const SearchBar = ({onSubmit}) => {
+
+  const searchRef = useRef();
+
+  const handleChange = (e) => {
+     searchRef.current.value = e.target.value;
+  };
+   const handleSubmit = (e) => {
+     e.preventDefault();
+     onSubmit(searchRef.current.value);
+   };
+
   return (
     <header>
-      <form>
-        <input
+      <form onSubmit={handleSubmit}>
+        <S.Input
           type="text"
-          autocomplete="off"
-          autofocus
+          autoComplete="off"
+          autoFocus
           placeholder="Search images and photos"
+          ref={searchRef} onChange={handleChange}
         />
-        <button type="submit" onSubmit={onSubmit}>Search</button>
+        <S.ButtonInput type="submit">Search</S.ButtonInput>
       </form>
     </header>
   );
 };
 
 export default SearchBar;
+
+
+
+

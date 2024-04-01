@@ -1,17 +1,20 @@
 import React from "react";
 import ImageCard from "../ImageCard/ImageCard";
+import * as S from './ImageGallery.styled'
 
-function ImageGallery({ photos }) {
+
+function ImageGallery({ photos, openModal }) {
   return (
-    <ul>
+    <S.List>
       {photos?.map((photo) => (
         <ImageCard
           key={photo.id}
           image={photo.urls.small}
           alt={photo.alt_description}
+          onClick={() => openModal(photo)}
         />
       ))}
-    </ul>
+    </S.List>
   );
 }
 
